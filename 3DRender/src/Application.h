@@ -26,6 +26,7 @@ protected:
 	virtual void Initialize();
 	virtual void InitializeGeometry();
 	virtual void InitializeShaders();
+	virtual	void InitializeTexture();
 	virtual void Update();
 	virtual void Render();
 	virtual void Clearup();

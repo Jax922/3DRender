@@ -1,5 +1,6 @@
 #pragma once
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 
 class Window
 {
@@ -32,6 +33,8 @@ public:
 	};
 	PressedState GetKeyState(int keyCode) const;
 	bool IsKeyPressed(int keyCode);
+
+	glm::vec2 GetMousePosition(bool normalized = false) const;
 
 
 private:

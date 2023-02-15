@@ -26,6 +26,7 @@ int Application::Run()
 
 	while (IsRunning())
 	{
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// update time
 		auto startTime = std::chrono::steady_clock::now();
 		std::chrono::duration<float> duration = std::chrono::steady_clock::now() - startTime;
@@ -56,6 +57,10 @@ void Application::InitializeShaders()
 {
 }
 
+void Application::InitializeTexture()
+{
+}
+
 void Application::Update()
 {
 	if (m_mainWindow.IsKeyPressed(GLFW_KEY_ESCAPE))
@@ -70,6 +75,7 @@ void Application::Render()
 
 void Application::Clearup()
 {
+	
 }
 
 bool Application::IsRunning()
