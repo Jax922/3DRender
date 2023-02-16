@@ -17,7 +17,7 @@ public:
 	inline void Clear(const Color& color) { Clear(true, color, false, 0.0, false, 0); }
 	void Clear(bool clearColor, const Color& color, bool clearDepth, GLdouble depth, bool clearStencil, GLint stencil);
 	void SetFeatureEnabled(GLenum feature, bool enabled);
-	void SetWireframeEnabled();
+	void SetWireframeEnabled(bool show);
 
 private:
 	bool m_contextLoaded; 

@@ -5,6 +5,7 @@
 #include "src/VertexObject/VertexArrayObject.h"
 #include "src/Shader/ShaderProgram.h"
 #include "src/Camera/Camera.h"
+#include "src/Lighting/Lighting.h"
 
 class MyApp : public Application
 {
@@ -24,6 +25,12 @@ private:
     VertexBufferObject m_vbo;
     VertexArrayObject m_vao;
     ShaderProgram m_shaderProgram;
-    Camera m_camera;
+    Lighting m_lighting;
+
+private:
+    void setupGui();
+    void renderGui();
+    void clearGui();
+
 };
 

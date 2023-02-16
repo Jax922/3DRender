@@ -3,7 +3,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-
 #ifndef NDEBUG
 ShaderProgram::Handle ShaderProgram::s_usedHandle = ShaderProgram::NullHandle;
 #endif
@@ -71,6 +70,11 @@ void ShaderProgram::Bind() const
 
 }
 
+ShaderProgram::Location ShaderProgram::GetUniformLocation(const char* name)
+{
+    return glGetUniformLocation(GetHandle(), name);
+}
+
 void ShaderProgram::SetUnifrom(const char* name, int value)
 {
     glUniform1i(glGetUniformLocation(GetHandle(), name), value);
@@ -88,17 +92,32 @@ void ShaderProgram::SetUnifrom(const char* name, float value)
 
 void ShaderProgram::SetUnifrom(const char* name, glm::vec2 vector)
 {
-    glUniform2fv(glGetUniformLocation(GetHandle(), name), 2, glm::value_ptr(vector));
+    glUniform2f(glGetUniformLocation(GetHandle(), name), vector[0], vector[1]);
 }
 
-void ShaderProgram::SetUnifrom(const char* name, glm::vec3 vector)
+void ShaderProgram::SetUnifrom(ShaderProgram::Location location, glm::vec3 vector)
 {
-    glUniform2fv(glGetUniformLocation(GetHandle(), name), 3, glm::value_ptr(vector));
+    glUniform3f(location, vector[0], vector[1], vector[2]);
+}
+
+void ShaderProgram::SetUnifrom(ShaderProgram::Location location, int value)
+{
+    glUniform1i(location, value);
+}
+
+void ShaderProgram::SetUnifrom(ShaderProgram::Location location, bool value)
+{
+    glUniform1i(location, (int)value);
+}
+
+void ShaderProgram::SetUnifrom(ShaderProgram::Location location, float value)
+{
+    glUniform1f(location, value);
 }
 
 void ShaderProgram::SetUnifrom(const char* name, glm::vec4 vector)
 {
-    glUniform2fv(glGetUniformLocation(GetHandle(), name), 4, glm::value_ptr(vector));
+    glUniform4f(glGetUniformLocation(GetHandle(), name), vector[0], vector[1], vector[2], vector[3]);
 }
 
 void ShaderProgram::SetUnifrom(const char* name, glm::mat4 matrix)

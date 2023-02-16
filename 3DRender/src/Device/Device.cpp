@@ -69,9 +69,17 @@ void Device::SetFeatureEnabled(GLenum feature, bool enabled)
 	}
 }
 
-void Device::SetWireframeEnabled()
+void Device::SetWireframeEnabled(bool show)
 {
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	if (show)
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	}
+	else
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
+
 }
 
 
